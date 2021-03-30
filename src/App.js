@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Board from './Board/Board.jsx'
+import './App.css'
+import { useState } from 'react'
 
 function App() {
+  const [isPoisonInvolved, setIsPoisonInvolved] = useState(false)
+  const [isReady, setIsReady] = useState(false)
+
+  const handleOnClick = (choice) => {
+    setIsPoisonInvolved(choice)
+    setIsReady(true)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!isReady &&
+        <>
+          <p>Poison Food Involved? (reverse current movement)</p>
+          <tr>
+            <td>
+              <button className="btn" onClick={() => handleOnClick(true)}>Yes</button>
+            </td>
+            <td>
+              <button className="btn" onClick={() => handleOnClick(false)}>No</button>
+            </td>
+          </tr>
+        </>}
+      {isReady && <Board isPoisonInvolved={isPoisonInvolved} />}
     </div>
-  );
+  )
 }
 
 export default App;
