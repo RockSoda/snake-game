@@ -1,3 +1,3 @@
-# A snake game build with React
+# Snake game
 
-It is hosting on http://snakegame-app.web.app/
+A snake game build with React is hosting on http://snakegame-app.web.app/
